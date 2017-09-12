@@ -1,2 +1,3 @@
 build/*
+post_processing.bat
 random_network_simulation_failed.cpp

@@ -17,6 +17,7 @@ build types binding with libraries and dlls*
 
 ## Dependency
 To successfully build simulation_lib, the following is required:
+
     * Visual Studio Toolset installed
     * Boost Package installed at ${CPACKAGE}/Boost
     * CLAPACK Package installed at ${CPACKAGE}/CLAPACK
@@ -35,6 +36,7 @@ To successfully build simulation_lib, the following is required:
 The last step installed the FIM_Package to ${CPACKAGE}\FIM
 
 The default command builds win32 static debug version. You can specify other options to generate other three versions.
+
     * CMAKE_BUILD_TYPE=Debug,Release
     * BUILD_SHARED_LIBS=ON,OFF
 
