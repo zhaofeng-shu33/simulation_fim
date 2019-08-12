@@ -2,7 +2,9 @@
 #include "link.h"
 #include <map>
 #include <vector>
+#if _WIN32
 #include "f2c.h"
+#endif
 #include "clapack.h"
 namespace Info_Coupling{                
 
