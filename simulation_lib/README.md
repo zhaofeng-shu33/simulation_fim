@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.com/zhaofeng-shu33/simulation_fim.svg?branch=master)](https://travis-ci.com/zhaofeng-shu33/simulation_fim/)
+
 # simulation_lib
 
 `cmake` build system
@@ -9,21 +11,19 @@ On windows platform, you should use [vcpkg](https://github.com/Microsoft/vcpkg) 
 ## Dependency
 To successfully build simulation_lib, the following is required:
 
-    
+
 * Boost
-* CLAPACK Package
+* lapack Package
+
+On different platforms, we use different wrapper. On Windows, `clapack` is used;
+On linux, `lapacke` is used.
 
 ## Build Commands
 ```shell
 cd simulation_lib
 mkdir build
 cd build
-cmake .. # you can add -G "NMake Makefiles" on windows platform
-nmake
-cd test
-ctest
-cd ..
-nmake install
+cmake ..
 ```
 
 The last step installed the FIM_Package to ${CPACKAGE}\FIM
