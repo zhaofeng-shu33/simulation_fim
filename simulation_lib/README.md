@@ -1,37 +1,30 @@
 # simulation_lib
 
-cmake build system,tested on windows only
+`cmake` build system
 
 ## General Consideration
 
-On windows platform, there is no such thing called C++ library path, therefore CMAKE can not automatically find
-all the header files and libraries needed to build the user program. There has been some attempt to deal with this
-problem --- Using Windows Registry or set external packages path manually.  
-
-I use the second approach, but to simplify the hard-coded file path. I install C++ packages to a fixed position on my
-disk "F:\install" and I set a global environment variable "CPACKAGE=F:\install".
-
-To find all necessary packages, I wrote some CMAKE_FILE_MODULES in cmake/Modules/ to automate this process. 
-*I tested such approach extensively using "nmake" to generate win32 lib,dll,exe. But for visual studio generator, there is a small problem related to 
-build types binding with libraries and dlls*
+On windows platform, you should use [vcpkg](https://github.com/Microsoft/vcpkg) to fix the dependencies. 
 
 ## Dependency
 To successfully build simulation_lib, the following is required:
 
-    * Visual Studio Toolset installed
-    * Boost Package installed at ${CPACKAGE}/Boost
-    * CLAPACK Package installed at ${CPACKAGE}/CLAPACK
-   
+    
+* Boost
+* CLAPACK Package
+
 ## Build Commands
-    * cd simulation_lib
-    * mkdir build
-    * cd build
-    * cmake -G "NMake Makefiles" ..\
-    * nmake
-    * cd test
-    * ctest
-    * cd..
-    * nmake install
+```shell
+cd simulation_lib
+mkdir build
+cd build
+cmake .. # you can add -G "NMake Makefiles" on windows platform
+nmake
+cd test
+ctest
+cd ..
+nmake install
+```
 
 The last step installed the FIM_Package to ${CPACKAGE}\FIM
 
