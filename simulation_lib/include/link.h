@@ -1,6 +1,5 @@
 #pragma once
 #include "node.h"
-#include <cmath>
 #include <boost/serialization/utility.hpp>
 namespace Info_Coupling{
 template <int dim>

@@ -1,11 +1,17 @@
 #pragma once
-#include "link.h"
 #include <map>
 #include <vector>
-#if _WIN32
-#include "f2c.h"
-#endif
-#include "clapack.h"
+extern "C"{
+typedef long int integer;
+typedef double doublereal;
+/* Subroutine */ int dgesv_(integer *n, integer *nrhs, doublereal *a, integer 
+	*lda, integer *ipiv, doublereal *b, integer *ldb, integer *info);    
+/* Subroutine */ int dsteqr_(char *compz, integer *n, doublereal *d__, 
+	doublereal *e, doublereal *z__, integer *ldz, doublereal *work, 
+	integer *info);    
+}
+
+#include "link.h"
 namespace Info_Coupling{                
 
 template <int dim>
@@ -54,7 +60,7 @@ class Network{
         }            
 		void efim(unsigned int node_index,double* matrix,int& error_code);//!< compute inverse of EFIM for the given node        
 		FIM_API void eigen_info(unsigned int node_index,double* eigenvalues,int& error_code);
-        template <int dim>
-        friend std::ostream &operator << (std::ostream &out,const Network<dim> &network);        
+        template <int dim2>
+        friend std::ostream &operator << (std::ostream &out,const Network<dim2> &network);        
 };
 }

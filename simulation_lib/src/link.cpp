@@ -1,4 +1,4 @@
-#pragma once
+#include <cmath>
 #include "link.h"
 namespace Info_Coupling{
 template <int dim>

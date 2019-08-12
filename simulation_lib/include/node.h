@@ -7,6 +7,7 @@
 #define FIM_API
 #endif
 #include <cassert>
+#include <cmath>
 #include <stdexcept>
 #include <iostream>
 namespace Info_Coupling{

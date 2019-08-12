@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+#include <cstring>
 #include "network.h"
 namespace Info_Coupling{                
 
