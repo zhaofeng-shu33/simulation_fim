@@ -21,27 +21,6 @@ int main(){
   net.add_link(link_31);
   assert(net.link_count()==3);  
   test_stream<<net;  
-  
-  //test matrix assembling result,should we use assert?
-  // double matrix[36];
-  // memset(matrix,0x00,36*sizeof(double));
-  // net.assemble_matrix(matrix);
-  // for(int i=0;i<6;i++){
-      // for(int j=0;j<6;j++)
-          // test_stream<<matrix[i*6+j]<<',';
-      // test_stream<<'\n';
-  // }
-  
-  //test EFIM
-   // int error_code=0;
-   // double matrix[3];
-   // net.EFIM(0/*first node index*/,matrix,error_code);
-   // if(error_code>0){
-       // test_stream<<"Error test EFIM!";
-       // exit(-1);
-   // }
-   // test_stream<<matrix[0]<<' '<<matrix[1]<<'\n';
-   // test_stream<<matrix[1]<<' '<<matrix[2]<<'\n';
 
    //test eigen info
    int error_code=0;
@@ -51,9 +30,10 @@ int main(){
        test_stream<<"Error test EFIM!";
        exit(-1);
    }
+   test_stream<<eigenvalues[0]<<'\n';
+   test_stream<<eigenvalues[1]<<'\n';      
    assert(fabs(eigenvalues[0]-0.625)+fabs(eigenvalues[1]-0.666667)<1e-4);       
-   //test_stream<<eigenvalues[0]<<'\n';
-   //test_stream<<eigenvalues[1]<<'\n';        
+     
    
    //test node degree info
    std::vector<unsigned int> degree_list;

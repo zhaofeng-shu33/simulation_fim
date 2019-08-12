@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
+#if _WIN32
 extern "C"{
 typedef long int integer;
 typedef double doublereal;
@@ -10,6 +11,18 @@ typedef double doublereal;
 	doublereal *e, doublereal *z__, integer *ldz, doublereal *work, 
 	integer *info);    
 }
+#else
+extern "C"{
+typedef int integer;
+typedef double doublereal;
+/* Subroutine */ void dgesv_(integer *n, integer *nrhs, doublereal *a, integer 
+	*lda, integer *ipiv, doublereal *b, integer *ldb, integer *info);    
+/* Subroutine */ void dsteqr_(char *compz, integer *n, doublereal *d__, 
+	doublereal *e, doublereal *z__, integer *ldz, doublereal *work, 
+	integer *info);    
+}
+#endif
+typedef integer lapack_int;    
 
 #include "link.h"
 namespace Info_Coupling{                
@@ -18,7 +31,7 @@ template <int dim>
 class Link;//forward decleration of class Link
 template <int dim>
 class Network{
-    typedef long int lapack_int;
+    
     private:
         std::map<Node<dim>*,std::vector<unsigned int>/*Index+AdjacencyList*/> NodeList;
         std::vector<Link<dim>> LinkList;

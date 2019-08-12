@@ -1,0 +1,17 @@
+os: linux
+dist: xenial
+sudo: required
+addons:
+    apt:
+        packages:
+            - libboost-all-dev
+            - liblapacke
+script:
+    - cd simulation_lib
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - test/node_test
+    - test/link_test
+    - test/network_test
