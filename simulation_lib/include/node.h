@@ -46,7 +46,6 @@ class Node{
         void toAnchor(){IsAgent=false;}
         void toAgent(){IsAgent=true;}
         bool is_agent(){return IsAgent;}
-        template <int dim>
         bool operator ==(const Node<dim>& other) 
         {return fabs(other.x()-Coordinate[0])+fabs(other.y()-Coordinate[1])<1e-4;}
         template <class Archive>
@@ -55,9 +54,9 @@ class Node{
             ar & Coordinate;
             ar & IsAgent;
         }
-        template <int dim>
-        friend std::ostream &operator << (std::ostream& out,const Node<dim>& p);
-        template <int dim>
-        friend double distance(const Node<dim>& Node1,const Node<dim>& Node2);
+        template <int dim2>
+        friend std::ostream &operator << (std::ostream& out,const Node<dim2>& p);
+        template <int dim2>
+        friend double distance(const Node<dim2>& Node1,const Node<dim2>& Node2);
 };
 }

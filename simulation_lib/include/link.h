@@ -38,10 +38,10 @@ class Link{
             ar & Nodes;
             ar & RII;
         }
-        template <int dim>
-        friend std::ostream &operator << (std::ostream &out,const Link<dim> &link);
-        template <int dim>
-        friend bool operator == (const Link<dim>& lhs,const Link<dim>& rhs){
+        template <int dim2>
+        friend std::ostream &operator << (std::ostream &out,const Link<dim2> &link);
+        template <int dim2>
+        friend bool operator == (const Link<dim2>& lhs,const Link<dim2>& rhs){
             return (fabs(lhs.RII-rhs.RII)<1e-4)&&(*lhs.Nodes.first==*rhs.Nodes.first)&&(*lhs.Nodes.second==*rhs.Nodes.second);
         }
         

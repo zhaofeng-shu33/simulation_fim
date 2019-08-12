@@ -11,10 +11,10 @@ SET(TARGET_SRC
 # if needed, copy files to the build directory
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
-PROJECT(${TARGET})
-find_package(lapack REQUIRED)
+PROJECT(${TARGET} LANGUAGES CXX)
+find_package(LAPACK REQUIRED)
 set(BOOST_ROOT $ENV{CPACKAGE}/Boost)
-find_package(Boost 1.58 REQUIRED COMPONENTS serialization)
+find_package(Boost 1.53 REQUIRED COMPONENTS serialization)
 
 include_directories(${Boost_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)
 link_directories(

@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include "node.h"
 namespace Info_Coupling{
 template <int dim>
@@ -16,7 +17,7 @@ double distance(const Node<dim>& Node1,const Node<dim>& Node2){
         for(int i=0;i<dim;i++){
             D+=(Node1.Coordinate[i]-Node2.Coordinate[i])*(Node1.Coordinate[i]-Node2.Coordinate[i]);
         }
-        D=sqrt(D);
+        D=std::sqrt(D);
         return D;
 }
 template FIM_API std::ostream& operator << (std::ostream &out,const Node<2> &p);
