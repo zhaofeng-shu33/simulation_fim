@@ -5,6 +5,7 @@ addons:
     apt:
         packages:
             - libboost-all-dev
+            - liblapacke
 script:
     - cd simulation_lib
     - mkdir build
