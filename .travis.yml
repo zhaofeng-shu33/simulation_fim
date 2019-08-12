@@ -6,6 +6,7 @@ addons:
         packages:
             - libboost-all-dev
 script:
+    - cd simulation_lib
     - mkdir build
     - cd build
     - cmake ..
