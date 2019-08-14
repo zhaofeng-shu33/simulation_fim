@@ -15,3 +15,10 @@ script:
     - test/node_test
     - test/link_test
     - test/network_test
+    - sudo make install
+    - cd ../../simulation_user
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - ./linear_network_simulation
