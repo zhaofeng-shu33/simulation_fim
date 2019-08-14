@@ -7,10 +7,16 @@ find_path(
 unset(FIM_LIBRARY CACHE)         
 unset(FIM_DLL CACHE)         
 
-If(${LIB_TYPE_STATIC})         
+If(${LIB_TYPE_STATIC})  
+if(WIN32)
+find_library(FIM_LIBRARY_RELEASE NAMES FIM)
+find_library(FIM_LIBRARY_DEBUG NAMES FIMd)
+select_library_configurations(FIM)
+ELSE()     
 find_library(FIM_LIBRARY
                 NAMES FIM
                 )
+ENDIF()                
 ELSE()
 find_library(FIM_LIBRARY
                 NAMES FIM
