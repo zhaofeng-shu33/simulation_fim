@@ -1,4 +1,3 @@
-[![Build Status](https://api.travis-ci.com/zhaofeng-shu33/simulation_fim.svg?branch=master)](https://travis-ci.com/zhaofeng-shu33/simulation_fim/)
 
 # simulation_lib
 
@@ -24,9 +23,11 @@ cd simulation_lib
 mkdir build
 cd build
 cmake ..
+cmake --build . --config Release
 ```
 
 On Unix systems, you can install the build library by
 ```shell
 sudo make install
 ```
+On Windows system, you should use `cmake --build . --config Release --target install` to install the project.
