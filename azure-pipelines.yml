@@ -1,0 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+- script: vcpkg install boost-serialization clapack
+  displayName: 'install deps'
+
+- script: |
+    cd simulation_lib
+    mkdir build
+    cd build
+    cmake -DCMAKE_TOOLCHAIN_FILE=%VCPKG_INSTALLATION_ROOT%\scripts\buildsystems\vcpkg.cmake ..
+    cmake --build . --config Release
+    cd test
+    ctest
+  displayName: 'build and test'

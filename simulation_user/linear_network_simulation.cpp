@@ -47,7 +47,8 @@ namespace linear_network_simulation{
               angle=random_angle(generator);
               speed=random_speed(generator);
               node_list[i]=Node<2>(x+speed*cos(angle),y+speed*sin(angle));
-              net.add_link(Link<2>(&node_list[i-1],&node_list[i],1.0/(speed*speed)));      
+              Link<2> tmp_link(&node_list[i-1],&node_list[i],1.0/(speed*speed));
+              net.add_link(tmp_link);      
               bound=net.SPEB(0);//node_index=0
               if(bound<0){
                std::cerr<<"Fatal Error: SPEB less than zero!";
