@@ -26,12 +26,7 @@ cd build
 cmake ..
 ```
 
-The last step installed the FIM_Package to ${CPACKAGE}\FIM
-
-The default command builds win32 static debug version. You can specify other options to generate other three versions.
-
-    * CMAKE_BUILD_TYPE=Debug,Release
-    * BUILD_SHARED_LIBS=ON,OFF
-
-If Dynamic Link Version is built, the corresponding DLL (FIMd.dll or FIM.dll) is copied automatically to build directory for the build/test/*.exe to run
-
+On Unix systems, you can install the build library by
+```shell
+sudo make install
+```

@@ -1,12 +1,12 @@
 find_path(
           FIM_INCLUDE_DIR
-          NAMES version.h
+          NAMES node.h
           HINTS ENV CPACKAGE
-          PATH_SUFFIXES FIM/include
+          PATH_SUFFIXES FIM
 )
 unset(FIM_LIBRARY CACHE)         
 unset(FIM_DLL CACHE)         
-If (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+If ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     If(${LIB_TYPE_STATIC})         
     find_library(FIM_LIBRARY
                     NAMES libFIMd
@@ -28,15 +28,12 @@ If (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 ELSE()#release build
     If(${LIB_TYPE_STATIC})         
     find_library(FIM_LIBRARY
-                    NAMES libFIM
-                    HINTS ENV CPACKAGE
-                    PATH_SUFFIXES FIM/lib
+                    NAMES FIM
                     )
     ELSE()
     find_library(FIM_LIBRARY
                     NAMES FIM
                     HINTS ENV CPACKAGE
-                    PATH_SUFFIXES FIM/lib
     )      
     find_file(FIM_DLL
                 NAMES FIM.dll

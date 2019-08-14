@@ -8,32 +8,22 @@ SET(TARGET_SRC
   ${TARGET}.cpp
   )
 # if needed, copy files to the build directory
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 OPTION (LIB_TYPE_STATIC "USE Static Libraries" ON)
-PROJECT(${TARGET})
+PROJECT(${TARGET} LANGUAGES CXX)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
-find_package(CLAPACK CONFIG REQUIRED)
+find_package(LAPACK REQUIRED)
 find_package(FIM REQUIRED)
 set(BOOST_ROOT $ENV{CPACKAGE}/Boost)
-find_package(Boost 1.58 REQUIRED COMPONENTS serialization)
+find_package(Boost 1.53 REQUIRED COMPONENTS serialization)
 include_directories(${Boost_INCLUDE_DIRS}
 ${CLAPACK_INCLUDE_DIRS}
 ${FIM_INCLUDE_DIRS}
 )
-link_directories(
-${Boost_LIBRARY_DIRS}
-)
-If (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-message("Debug build")
-elseif(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-message("release build")
-else()
-MESSAGE(FATAL_ERROR
-      "Unknown build type ${CMAKE_BUILD_TYPE}"
-       )
-endif()
 add_executable(${TARGET} ${TARGET_SRC})
-target_link_libraries(${TARGET} ${FIM_LIBRARIES} f2c lapack)
+target_link_libraries(${TARGET} ${FIM_LIBRARIES} ${LAPACK_LIBRARIES} ${Boost_SERIALIZATION_LIBRARY})
 
 If(NOT ${LIB_TYPE_STATIC})
 message("COPY ${FIM_DLL} to working directory")

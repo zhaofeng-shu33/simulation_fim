@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include <chrono>
 #include "network.h"
+#include <cstring>
 #include <random>
 #include <fstream>
 #include <ostream>

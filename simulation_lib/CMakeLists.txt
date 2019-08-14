@@ -23,13 +23,7 @@ ${Boost_LIBRARY_DIRS}
 )
 set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "Append this string to debug lib names")
 
-If(${BUILD_SHARED_LIBS})
-message("DLL build")
 set(libTarget FIM)
-ELSE()
-message("STATIC build")
-set(libTarget libFIM)
-ENDIF()
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(include)
