@@ -31,3 +31,6 @@ On Unix systems, you can install the build library by
 sudo make install
 ```
 On Windows system, you should use `cmake --build . --config Release --target install` to install the project.
+Run `cmake --build . --config Debug --target install` to install the debug build library.
+
+The default install location needs admin priviledge to write.

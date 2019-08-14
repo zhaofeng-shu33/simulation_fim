@@ -15,7 +15,7 @@ steps:
         vcpkg
         $(Agent.OS)
         install
-    path: ${VCPKG_INSTALLATION_ROOT}/installed/x64-windows
+    path: C:/vcpkg/installed/x64-windows
   displayName: Cache vcpkg installed package
   
 - script: vcpkg install boost-serialization:x64-windows clapack:x64-windows
@@ -30,3 +30,4 @@ steps:
     cd test
     ctest    
   displayName: 'build and test'
+

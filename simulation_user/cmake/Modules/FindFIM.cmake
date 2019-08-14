@@ -1,6 +1,6 @@
 find_path(
           FIM_INCLUDE_DIR
-          NAMES node.h
+          NAMES network.h
           HINTS "linear_network_simulation"
           PATH_SUFFIXES FIM
 )
