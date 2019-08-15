@@ -32,7 +32,8 @@ steps:
   displayName: 'build and test'
 
 - script: |
-    cd ..
+    dir
+    cd simulation_lib\build
     cmake --build . --config Release --target install
     cd ..\..\simulation_user
     mkdir build
